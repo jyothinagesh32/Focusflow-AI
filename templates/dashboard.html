@@ -1,0 +1,28 @@
+{% extends "base.html" %}{% block content %}
+<h1>Welcome, {{ student.name }}</h1>
+<div class="grid">
+<div class="card"><h3>Productivity Score</h3><div class="score">{% if score is not none %}{{ score }}%{% else %}—{% endif %}</div><small>{% if score is none %}Add study data to calculate your score.{% else %}Based on saved records.{% endif %}</small></div>
+<div class="card"><h3>Pattern Trend</h3><div class="big">{{ pattern.trend }}</div></div>
+<div class="card"><h3>Completion Rate</h3><div class="big">{{ pattern.completion_rate }}%</div></div>
+<div class="card"><h3>Avg Study Hours</h3><div class="big">{{ pattern.average_study_hours }}</div></div>
+</div>
+<div class="card {% if risk.category == 'High Risk' %}risk-high{% elif risk.category == 'Moderate Risk' %}risk-moderate{% endif %}">
+  <h2>Productivity Risk Alert</h2>
+  <p><strong>{{ risk.category }}</strong>{% if risk.score is not none %} — risk indicator {{ risk.score }}/100{% endif %}</p>
+  {% if risk.category == 'High Risk' %}
+    <p><strong>Action needed:</strong> missed work or recent study patterns indicate elevated risk. Review the actions below today.</p>
+  {% elif risk.category == 'Moderate Risk' %}
+    <p><strong>Attention:</strong> some study habits or task statuses need improvement. Follow the suggested actions.</p>
+  {% elif risk.category == 'Insufficient data' %}
+    <p>Add daily study records or tracked tasks/sessions to activate the risk indicator.</p>
+  {% else %}
+    <p>No strong risk signals were found in the available data. Continue tracking your progress.</p>
+  {% endif %}
+  <h3>Contributing factors</h3><ul>{% for f in risk.factors %}<li>{{ f }}</li>{% endfor %}</ul>
+  <h3>Suggested actions</h3><ul>{% for a in risk.actions %}<li>{{ a }}</li>{% endfor %}</ul>
+  <a href="{{ url_for('risk') }}">View risk details</a>
+</div>
+<div class="card"><h2>Adaptive Recommendations</h2><ul>{% for r in recommendations %}<li>{{ r }}</li>{% endfor %}</ul><a href="{{ url_for('recommendations') }}">Manage recommendations</a></div>
+<div class="card"><h2>Productivity trend</h2><canvas id="scoreChart" height="100"></canvas></div>
+<script>fetch("{{ url_for('chart_data') }}").then(r=>r.json()).then(d=>{if(d.scores&&d.scores.length){new Chart(document.getElementById('scoreChart'),{type:'line',data:{labels:d.dates,datasets:[{label:'Daily productivity score',data:d.scores,tension:.25}]},options:{responsive:true,scales:{y:{min:0,max:100}}}})}})</script>
+{% endblock %}

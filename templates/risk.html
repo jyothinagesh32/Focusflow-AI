@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card {% if risk.category == 'High Risk' %}risk-high{% elif risk.category == 'Moderate Risk' %}risk-moderate{% endif %}">
+  <h1>Productivity Risk Alert</h1>
+  <h2>{{ risk.category }}</h2>
+  {% if risk.score is not none %}
+    <p>Risk indicator: <strong>{{ risk.score }}/100</strong>. This is a guidance signal, not a prediction of certain failure.</p>
+  {% else %}
+    <p>{{ risk.factors[0] }}</p>
+  {% endif %}
+  {% if risk.category == 'Insufficient data' %}
+    <p><strong>Data check:</strong> no study records, subject tasks, or timetable sessions were found for the currently logged-in student. Add them while logged into this account, then refresh this page.</p>
+  {% endif %}
+  <h3>Contributing factors</h3>
+  <ul>{% for f in risk.factors %}<li>{{ f }}</li>{% endfor %}</ul>
+  <h3>Suggested actions</h3>
+  <ul>{% for a in risk.actions %}<li>{{ a }}</li>{% endfor %}</ul>
+</div>
+<div class="card">
+  <h2>Assessment history</h2>
+  {% if history %}<ul>{% for h in history %}<li>{{ h.assessed_at }} — {{ h.category }} ({{ h.score }}/100)</li>{% endfor %}</ul>
+  {% else %}<p>No risk history yet. The current assessment is shown above.</p>{% endif %}
+</div>
+{% endblock %}

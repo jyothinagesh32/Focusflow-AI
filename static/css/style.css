@@ -1,0 +1,57 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+nav{background:#172033;color:white;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{font-size:22px;font-weight:bold}
+.navlinks{display:flex;gap:12px;flex-wrap:wrap}
+.navlinks a{color:white;text-decoration:none;font-size:14px}
+.container{width:92%;max-width:1150px;margin:30px auto}
+
+/* Home-page hero with student image */
+.hero{padding:55px 20px}
+.hero-with-image{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:45px;min-height:560px;text-align:left}
+.hero-content{padding:20px 0}
+.hero-badge{display:inline-block;background:#e8f0ff;color:#2563eb;font-weight:700;font-size:13px;padding:8px 13px;border-radius:999px;margin-bottom:15px}
+.hero h1{font-size:52px;margin:0 0 12px;color:#172033}
+.hero h2{max-width:700px;margin:0;line-height:1.45;font-size:25px}
+.hero p{max-width:700px;margin:22px 0;line-height:1.7;font-size:16px}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-block;border:0;background:#2563eb;color:white;padding:11px 18px;border-radius:8px;text-decoration:none;cursor:pointer;margin:8px 5px}
+.secondary{background:#475569}
+.hero-image-wrap{position:relative;width:100%;max-width:540px;margin-left:auto}
+.hero-image{display:block;width:100%;height:390px;object-fit:cover;border-radius:24px;box-shadow:0 18px 45px rgba(23,32,51,.18)}
+.image-caption{position:absolute;left:18px;bottom:18px;background:rgba(23,32,51,.82);color:#fff;padding:10px 15px;border-radius:10px;font-weight:700;font-size:14px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;border-radius:14px;padding:22px;margin:18px 0;box-shadow:0 5px 20px rgba(0,0,0,.06)}
+.score{font-size:42px;font-weight:bold}
+.big{font-size:25px;font-weight:bold}
+.form-card{max-width:600px;margin:40px auto}
+.form-card input,.form-card textarea,input,select{width:100%;padding:12px;margin:7px 0 15px;border:1px solid #ccd4e0;border-radius:7px}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.form-grid label{font-weight:bold}
+.form-grid input{margin-top:8px}
+.alert{background:#e0f2fe;padding:12px;border-radius:8px;margin-bottom:15px}
+.recommendation{padding:15px;margin:10px 0;background:#eef4ff;border-left:4px solid #2563eb;border-radius:5px}
+li{margin:10px 0;line-height:1.5}
+hr{border:0;border-top:1px solid #ddd;margin:25px 0}
+
+@media (max-width:800px){
+  .hero-with-image{grid-template-columns:1fr;gap:25px;min-height:auto;text-align:center}
+  .hero h1{font-size:42px}
+  .hero h2{font-size:21px}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-image-wrap{margin:0 auto}
+  .hero-image{height:300px}
+}
+
+
+/* Visible status-aware productivity risk alert */
+.risk-high {
+  border-left: 6px solid #c62828;
+  background: #fff1f1;
+}
+.risk-moderate {
+  border-left: 6px solid #d97706;
+  background: #fff8e8;
+}

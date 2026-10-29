@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Productivity Pattern Analysis</h1>
+<div class="grid">
+<div class="card"><h3>Average Study Hours</h3><div class="big">{{ pattern.average_study_hours }}</div></div>
+<div class="card"><h3>Average Sleep</h3><div class="big">{{ pattern.average_sleep }}</div></div>
+<div class="card"><h3>Average Distraction</h3><div class="big">{{ pattern.average_distraction }}</div></div>
+<div class="card"><h3>Best Focus Date</h3><div class="big">{{ pattern.best_focus_day }}</div></div>
+</div>
+<div class="card"><canvas id="scoreChart"></canvas></div>
+<script>
+fetch("/api/chart-data").then(r=>r.json()).then(d=>{
+ new Chart(document.getElementById("scoreChart"), {
+  type:"line",
+  data:{labels:d.dates,datasets:[
+    {label:"Productivity Score",data:d.scores},
+    {label:"Study Hours",data:d.hours}
+  ]}
+ });
+});
+</script>
+{% endblock %}

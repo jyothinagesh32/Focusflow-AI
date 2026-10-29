@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero hero-with-image">
+  <div class="hero-content">
+    <span class="hero-badge">AI-Powered Student Productivity</span>
+    <h1>FocusFlow AI</h1>
+    <h2>Personalized Academic Productivity Pattern Analysis and Adaptive Study Recommendation System</h2>
+    <p>Collect student data → analyze patterns → calculate productivity → predict future performance → simulate changes → recommend → personalize → learn from feedback.</p>
+    <div class="hero-actions">
+      <a class="btn" href="{{ url_for('register') }}">Get Started</a>
+      <a class="btn secondary" href="{{ url_for('login') }}">Login</a>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap" aria-label="Students studying together">
+    <img class="hero-image"
+         src="https://images.pexels.com/photos/8199165/pexels-photo-8199165.jpeg?auto=compress&cs=tinysrgb&w=1200"
+         alt="Students studying together in a classroom">
+    <div class="image-caption">Learn • Focus • Improve</div>
+  </div>
+</section>
+{% endblock %}

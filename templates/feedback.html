@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card form-card">
+<h1>Student Feedback</h1>
+<form method="post">
+<textarea name="recommendation" placeholder="Which recommendation did you try?" required></textarea>
+<label>Rating (1–5)<input type="number" name="rating" min="1" max="5" required></label>
+<textarea name="comment" placeholder="What worked or did not work?"></textarea>
+<button class="btn">Submit Feedback</button>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}
+<div class="card form-card"><h2>Create Student Account</h2><form method="post" novalidate>
+<label>Student name<input name="name" value="{{ name|default('') }}" pattern="[A-Za-zÀ-ÖØ-öø-ÿ]+([ '\u2019-][A-Za-zÀ-ÖØ-öø-ÿ]+)*" title="Letters, spaces, hyphens and apostrophes only" required></label>
+<label>Email<input type="email" name="email" value="{{ email|default('') }}" required></label>
+<label>Password<input type="password" name="password" minlength="8" required><small>At least 8 characters, including a letter and a number.</small></label>
+<label>Confirm password<input type="password" name="confirm_password" minlength="8" required></label><button class="btn">Register</button></form><p>Already registered? <a href="{{ url_for('login') }}">Login</a></p></div>{% endblock %}

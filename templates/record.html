@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+<h2>Daily Student Data Collection</h2>
+<form method="post" class="form-grid">
+<label>Date<input type="date" name="study_date" required></label>
+<label>Study hours<input type="number" step="0.1" name="study_hours" min="0" required></label>
+<label>Focused minutes<input type="number" name="focus_minutes" min="0" required></label>
+<label>Breaks<input type="number" name="breaks" min="0" required></label>
+<label>Sleep hours<input type="number" step="0.1" name="sleep_hours" min="0" max="24" required></label>
+<label>Screen time (hours)<input type="number" step="0.1" name="screen_time" min="0" required></label>
+<label>Tasks completed<input type="number" name="tasks_completed" min="0" required></label>
+<label>Tasks planned<input type="number" name="tasks_planned" min="1" required></label>
+<label>Distraction level (0–10)<input type="number" name="distraction_level" min="0" max="10" required></label>
+<label>Mood (1–5)<input type="number" name="mood" min="1" max="5" required></label>
+</div>
+<button class="btn">Save Study Data</button>
+</form>
+</div>
+{% endblock %}

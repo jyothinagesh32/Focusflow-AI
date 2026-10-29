@@ -1,0 +1,8 @@
+FocusFlow AI - Home Page Image
+
+The home page now includes a student-learning hero image using a Pexels image URL in templates/home.html.
+The styling is in static/css/style.css under "Home-page hero with student image".
+
+If you want to use your own image instead of the online image, place it in static/images/students.jpg and replace the <img> src in templates/home.html with:
+
+{{ url_for('static', filename='images/students.jpg') }}

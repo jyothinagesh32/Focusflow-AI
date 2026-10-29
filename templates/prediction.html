@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+<h1>ML Productivity Prediction</h1>
+{% if latest %}
+<p>Based on your latest study record, the ML model predicts:</p>
+<div class="score">{{ prediction }}%</div>
+<p>This is a project prediction generated from the training data and should be treated as an academic prototype, not a guaranteed future result.</p>
+{% else %}
+<p>Add at least one study record to generate a prediction.</p>
+{% endif %}
+</div>
+{% endblock %}
